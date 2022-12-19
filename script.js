@@ -27,3 +27,13 @@ function operate(operator, a, b){
             break;
     }
 }
+
+const digits = document.querySelectorAll('.digit');
+const display = document.querySelector('.output-display');
+let displayValue = 0;
+
+digits.forEach(button =>{
+    button.addEventListener('click', () => {
+        display.textContent += button.textContent;
+    });
+});
