@@ -39,6 +39,7 @@ function calculate(){
     let result;
     let operator;
     let firstNumSet = false;
+    let secondNumSet = false;
 
     digits.forEach(button => {
         button.addEventListener('click', () => {
@@ -59,6 +60,7 @@ function calculate(){
         button.addEventListener('click', () => {
             operator = button.id;
             firstNumSet = true;
+
 
             console.log(operator);
         });
