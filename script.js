@@ -70,6 +70,7 @@ function calculate(){
             firstNum = result;
             secondNum = 0;
             operator = 'undefined';
+            display.textContent = result;
             console.log(`RESULT: ${result} FIRSTNUM: ${firstNum} OPERATOR: ${operator}` );
         }
     });
