@@ -44,13 +44,13 @@ function calculate(){
     digits.forEach(button => {
         button.addEventListener('click', () => {
 
-            if (typeof operator == 'undefined'){
+            if (!firstNumSet){
                 firstNum += button.textContent;
-
+                display.textContent = Number(firstNum);
                 console.log(`First Num: ${Number(firstNum)}`);
-            } else if (typeof operator !== 'undefined'){
+            } else if (!secondNumSet){
                 secondNum += button.textContent;
-
+                display.textContent = Number(secondNum);
                 console.log(`Second Num: ${Number(secondNum)}`);
             }
         });
@@ -58,22 +58,35 @@ function calculate(){
 
     operators.forEach(button => {
         button.addEventListener('click', () => {
+            
+            if(firstNumSet)
+            {
+                result = operate(operator, Number(firstNum), Number(secondNum));
+                display.textContent = result;
+                firstNum = result;
+                secondNum = 0;
+                console.log(`First Num: ${Number(firstNum)}`);
+                console.log(`Second Num: ${Number(secondNum)}`);
+            }
             operator = button.id;
             firstNumSet = true;
-
 
             console.log(operator);
         });
     });
 
     equal.addEventListener('click', () => {
-        if(typeof operator != 'undefined' && firstNumSet){
+        if(firstNumSet && typeof operator != 'undefined'){
             result = operate(operator, Number(firstNum), Number(secondNum));
             firstNum = result;
             secondNum = 0;
-            operator = 'undefined';
             display.textContent = result;
             console.log(`RESULT: ${result} FIRSTNUM: ${firstNum} OPERATOR: ${operator}` );
+        }
+        else {
+            firstNum = 0;
+            secondNum = 0;
+            console.log("ERROR");
         }
     });
 }
